@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malik Muhammad Noshair Amjad — Research Portfolio</title>
+<title>Analysis of a Solar Thermal Power Plant using MATLAB — Malik Muhammad Noshair Amjad</title>
 <meta name="description" content="Data-driven analysis of a concentrating solar power plant — final year engineering research by Malik Muhammad Noshair Amjad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -250,6 +250,26 @@
   .gpa-box .row span:last-child{font-family:'IBM Plex Mono', monospace; font-size:1rem;}
   .note{font-size:0.84rem; color:var(--ink-soft); margin-top:14px; border-top:1px dashed var(--line); padding-top:14px;}
 
+  /* ---------- Conclusion ---------- */
+  .conclusion{background:var(--paper-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .conclusion-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media (max-width:860px){ .conclusion-grid{grid-template-columns:1fr;} }
+  .conclusion-block h3{font-size:1.05rem; margin-bottom:16px; font-family:'IBM Plex Sans',sans-serif; font-weight:600;}
+  .finding-list{list-style:none; margin:0; padding:0;}
+  .finding-list li{
+    padding:14px 0 14px 26px; border-top:1px solid var(--line);
+    position:relative; font-size:0.94rem; color:var(--ink-soft);
+  }
+  .finding-list li:first-child{border-top:none;}
+  .finding-list li::before{
+    content:"—"; position:absolute; left:0; top:14px; color:var(--ember-dark);
+  }
+  .finding-list b{color:var(--ink); font-weight:500;}
+  .skill-note{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; margin-top:20px; font-size:0.9rem; color:var(--ink-soft);
+  }
+
   /* ---------- Footer / contact ---------- */
   footer{background:var(--navy); color:#D9D4C6; padding:80px 0 40px;}
   footer h2{color:#F7F4EC; font-size:clamp(1.6rem,3vw,2.2rem); max-width:14ch;}
@@ -275,8 +295,7 @@
       <a href="#overview">Overview</a>
       <a href="#methodology">Methodology</a>
       <a href="#results">Data &amp; results</a>
-      <a href="#toolkit">Toolkit</a>
-      <a href="#record">Academic record</a>
+      <a href="#conclusion">Conclusion</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -423,81 +442,34 @@
   </div>
 </section>
 
-<section id="toolkit">
+<section class="conclusion" id="conclusion">
   <div class="wrap">
-    <div class="section-label">04 — Quantitative toolkit</div>
+    <div class="section-label">04 — Conclusion</div>
     <div class="section-head">
-      <h2>What this project drew on, and what I bring beyond it</h2>
-      <p>The FYP is one evidence point. Three years in live network operations added a second: reading dashboards, logs, and alerts under time pressure to find the signal that explains a fault.</p>
+      <h2>What the analysis showed, and what it taught me</h2>
+      <p>The point of the project was never just to get a Simulink model running. It was to see whether the numbers coming out of it told a coherent, physically sensible story — and to get comfortable pulling that story out of raw simulation data.</p>
     </div>
-    <div class="toolkit-grid">
-      <div class="toolkit-col">
-        <h3>Modelling &amp; analysis</h3>
-        <span class="sub">from coursework &amp; the FYP</span>
-        <ul class="skill-list">
-          <li>MATLAB / Simulink <div class="meter"><i style="width:88%"></i></div></li>
-          <li>Numerical computation <div class="meter"><i style="width:78%"></i></div></li>
-          <li>Probability &amp; statistics <div class="meter"><i style="width:65%"></i></div></li>
-          <li>Digital signal processing <div class="meter"><i style="width:70%"></i></div></li>
-          <li>Control systems (PID) <div class="meter"><i style="width:80%"></i></div></li>
-          <li>SQL <div class="meter"><i style="width:60%"></i></div></li>
+    <div class="conclusion-grid">
+      <div class="conclusion-block">
+        <h3>Findings from the data</h3>
+        <ul class="finding-list">
+          <li><b>Irradiance drives the whole chain.</b> Higher solar irradiance produced more heat, which in turn raised steam pressure — the strongest and most direct relationship in the dataset.</li>
+          <li><b>Steam pressure sets the generation ceiling.</b> Periods of higher steam pressure allowed the turbine to operate more effectively, increasing power generation capacity.</li>
+          <li><b>Efficiency plateaus rather than climbing indefinitely.</b> Global efficiency rose with mechanical power output up to roughly 24%, then flattened — a diminishing-returns pattern rather than a straight line.</li>
+          <li><b>The control loop is stable.</b> Throttle response and generation both tracked the stepped demand profile smoothly, with no oscillation or overshoot, confirming the modelled controller behaves as intended under changing load.</li>
+          <li><b>Thermal storage does its job.</b> The boiler and preheater stages settled into a steady band even while irradiance fluctuated, showing the storage system was absorbing short-term variability rather than passing it straight to the turbine.</li>
         </ul>
       </div>
-      <div class="toolkit-col">
-        <h3>Systems &amp; monitoring</h3>
-        <span class="sub">from three years in NOC operations</span>
-        <ul class="skill-list">
-          <li>Zabbix / Nagios dashboards <div class="meter"><i style="width:85%"></i></div></li>
-          <li>Log analysis (RHEL) <div class="meter"><i style="width:75%"></i></div></li>
-          <li>Incident &amp; root-cause analysis <div class="meter"><i style="width:88%"></i></div></li>
-          <li>Network protocols (TCP/IP, BGP, OSPF) <div class="meter"><i style="width:82%"></i></div></li>
-          <li>Linux administration <div class="meter"><i style="width:78%"></i></div></li>
-          <li>Documentation &amp; reporting <div class="meter"><i style="width:80%"></i></div></li>
+      <div class="conclusion-block">
+        <h3>What doing this taught me</h3>
+        <ul class="finding-list">
+          <li><b>Turning physical equations into a testable model.</b> Encoding real thermodynamic and fluid-flow relationships as Simulink/Simscape blocks, rather than just quoting formulas.</li>
+          <li><b>Reading a system through its data, not just its diagram.</b> Extracting time-series output and asking which variables move together, by how much, and with what lag — the same question at the centre of most data analysis work.</li>
+          <li><b>Separating correlation from mechanism.</b> Explaining why irradiance and steam pressure move together (a physical causal chain), rather than just noting that they do.</li>
+          <li><b>Diagnosing behaviour from transients.</b> Using the shape of a response curve — how fast it settles, whether it overshoots — to judge whether a control loop is actually working, not just whether the final value looks right.</li>
+          <li><b>Communicating a technical result.</b> Structuring a finding as: here is the plot, here is the relationship, here is why it matters — the same shape this page follows.</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="record">
-  <div class="wrap">
-    <div class="section-label">05 — Academic record</div>
-    <div class="section-head">
-      <h2>Education &amp; certifications</h2>
-    </div>
-    <div class="record-grid">
-      <div class="record-block">
-        <div class="gpa-box">
-          <div class="row"><span>Degree</span><span>BS Electrical Engineering</span></div>
-          <div class="row"><span>Institution</span><span>COMSATS University Islamabad</span></div>
-          <div class="row"><span>Graduated</span><span>July 2023</span></div>
-          <div class="row"><span>CGPA</span><span>2.72 / 4.00</span></div>
-        </div>
-        <h3>Relevant coursework</h3>
-        <ul class="course-list">
-          <li><b>Numerical Computations</b> — B+</li>
-          <li><b>Probability Methods in Engineering</b> — C+</li>
-          <li><b>Digital Signal Processing</b> — C+</li>
-          <li><b>Control Systems</b> — C</li>
-          <li><b>Introduction to Computer Programming</b> — B-</li>
-          <li><b>Object Oriented Programming</b> — B+</li>
-          <li><b>Signals and Systems</b> — B-</li>
-        </ul>
-        <p class="note">Coursework and CGPA drawn from official COMSATS transcript, available on request.</p>
-      </div>
-      <div class="record-block">
-        <h3>Certifications</h3>
-        <ul class="cert-list">
-          <li><span>Fortinet FortiGate 7.6 Operator</span><span class="yr">2026</span></li>
-          <li><span>Network Support and Security — Cisco</span><span class="yr">2025</span></li>
-          <li><span>ISO/IEC 27001:2022 Information Security Associate</span><span class="yr">2025</span></li>
-          <li><span>CCNA: Enterprise Networking, Security &amp; Automation</span><span class="yr">2024</span></li>
-          <li><span>CCNA: Switching, Routing &amp; Wireless Essentials</span><span class="yr">2024</span></li>
-          <li><span>Hands-on Introduction to Linux &amp; Shell Scripting — IBM</span><span class="yr">2024</span></li>
-          <li><span>CCNA: Introduction to Networks — Cisco</span><span class="yr">2023</span></li>
-        </ul>
-        <h3 style="margin-top:32px;">Current role</h3>
-        <p style="color:var(--ink-soft); font-size:0.92rem;">NOC (IP) Specialist, MNP Database (G) Limited — live monitoring, incident/RCA processes, and infrastructure health reporting across telecom and financial-services networks since December 2024.</p>
+        <div class="skill-note">These are the habits I want to take into a Data Analytics degree: the project was thermodynamics, but the actual work — model, extract, correlate, explain — is analysis work.</div>
       </div>
     </div>
   </div>
@@ -507,8 +479,8 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <h2>About this write-up</h2>
-        <p style="color:#B7B2A2; max-width:42ch; margin-top:16px;">This page documents the modelling and data analysis behind my final year project — the model, the method, and what the resulting data showed.</p>
+        <h2>About this project</h2>
+        <p style="color:#B7B2A2; max-width:42ch; margin-top:16px;">This page documents the MATLAB/Simulink model of a parabolic-trough solar thermal plant, built for my final year project at COMSATS University Islamabad, and the correlations read out of its simulated data.</p>
       </div>
       <div class="footer-links">
         <div>
