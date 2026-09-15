@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malik Muhammad Noshair Amjad — Research Portfolio</title>
+<meta name="description" content="Data-driven analysis of a concentrating solar power plant — final year engineering research by Malik Muhammad Noshair Amjad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#201B14;
+    --ink-soft:#4A4335;
+    --paper:#ECE7DC;
+    --paper-raised:#F7F4EC;
+    --navy:#101826;
+    --navy-soft:#1B2536;
+    --ember:#D9662B;
+    --ember-dark:#B94F1E;
+    --steel:#2C5A82;
+    --line: rgba(32,27,20,0.14);
+    --line-dark: rgba(236,231,220,0.14);
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    line-height:1.15;
+    margin:0;
+    color:inherit;
+  }
+  p{margin:0 0 1em 0; max-width:64ch;}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(236,231,220,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px;}
+  .brand{font-family:'Source Serif 4', serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;}
+  .brand span{color:var(--ember);}
+  .navlinks{display:flex; gap:28px; font-size:0.92rem;}
+  .navlinks a{text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .15s ease, color .15s ease;}
+  .navlinks a:hover{color:var(--ink); border-color:var(--ember);}
+  @media (max-width:640px){ .navlinks{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex; align-items:flex-end;
+    background:linear-gradient(180deg, rgba(16,24,38,0.35) 0%, rgba(16,24,38,0.55) 45%, rgba(16,24,38,0.94) 100%), url('hero-csp.jpeg') center/cover no-repeat;
+    color:#F2EFE7;
+  }
+  .hero-inner{padding-bottom:64px; padding-top:180px; width:100%;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:#E8B486;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:#E8B486; display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.6rem);
+    max-width:16ch;
+    color:#F7F4EC;
+  }
+  .hero .lede{
+    margin-top:22px;
+    max-width:56ch;
+    font-size:1.08rem;
+    color:#D9D4C6;
+  }
+  .hero-cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    font-size:0.92rem;
+    font-weight:500;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--ember); color:#181008;}
+  .btn-primary:hover{background:var(--ember-dark);}
+  .btn-ghost{border-color:rgba(247,244,236,0.4); color:#F7F4EC;}
+  .btn-ghost:hover{border-color:#F7F4EC;}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:96px 0;}
+  @media (max-width:640px){ section{padding:64px 0;} }
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--steel);
+    margin-bottom:14px;
+  }
+  .section-head{max-width:60ch; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.5rem, 3vw, 2.1rem);}
+  .section-head p{margin-top:14px; color:var(--ink-soft); font-size:1.02rem;}
+
+  /* ---------- Bridge / pull statement ---------- */
+  .bridge{background:var(--paper-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .bridge blockquote{
+    margin:0 auto; max-width:52ch;
+    font-family:'Source Serif 4', serif;
+    font-size:clamp(1.3rem, 2.6vw, 1.7rem);
+    line-height:1.45;
+    text-align:center;
+    color:var(--ink);
+  }
+  .bridge cite{
+    display:block; text-align:center; margin-top:26px;
+    font-style:normal; font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem; color:var(--ink-soft);
+  }
+
+  /* ---------- Overview two-col ---------- */
+  .overview-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center;}
+  @media (max-width:860px){ .overview-grid{grid-template-columns:1fr;} }
+  .schematic-stack{display:flex; flex-direction:column; gap:18px;}
+  .schematic-card{
+    background:var(--paper-raised); border:1px solid var(--line);
+    padding:18px; border-radius:var(--radius);
+  }
+  .schematic-card img{margin:0 auto;}
+  .schematic-caption{
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem;
+    color:var(--ink-soft); margin-top:12px; text-align:center;
+  }
+  .fact-list{list-style:none; margin:28px 0 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:18px 24px;}
+  .fact-list li{border-top:1px solid var(--line); padding-top:10px;}
+  .fact-list .num{font-family:'IBM Plex Mono', monospace; font-size:1.15rem; color:var(--ember-dark); display:block;}
+  .fact-list .lbl{font-size:0.86rem; color:var(--ink-soft);}
+  @media (max-width:480px){ .fact-list{grid-template-columns:1fr;} }
+
+  /* ---------- Flow / process ---------- */
+  .flow{
+    display:flex; flex-wrap:wrap; gap:0;
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+    background:var(--paper-raised);
+  }
+  .flow-step{
+    flex:1 1 150px; padding:22px 18px; border-right:1px solid var(--line);
+    font-size:0.86rem; position:relative;
+  }
+  .flow-step:last-child{border-right:none;}
+  .flow-step .fn{font-family:'IBM Plex Mono', monospace; color:var(--steel); font-size:0.76rem; display:block; margin-bottom:8px;}
+  @media (max-width:760px){ .flow-step{flex:1 1 45%; border-right:none; border-bottom:1px solid var(--line);} }
+
+  /* ---------- Methodology dark panel ---------- */
+  .methodology{background:var(--navy); color:#E9E5D8;}
+  .methodology .section-label{color:#E8B486;}
+  .methodology .section-head p{color:#B7B2A2;}
+  .model-frame{
+    background:#F7F4EC; border-radius:var(--radius);
+    padding:20px; border:1px solid rgba(0,0,0,0.06);
+  }
+  .model-frame img{width:100%; height:auto;}
+  .methodology-cols{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:40px;}
+  @media (max-width:760px){ .methodology-cols{grid-template-columns:1fr;} }
+  .methodology-cols h3{font-size:1.02rem; color:#F2EFE7; margin-bottom:10px; font-family:'IBM Plex Sans',sans-serif; font-weight:600;}
+  .methodology-cols p{color:#B7B2A2; font-size:0.96rem;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem;
+    border:1px solid var(--line-dark); padding:5px 10px; border-radius:2px; color:#D9D4C6;
+  }
+
+  /* ---------- Results grid ---------- */
+  .results-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  @media (max-width:760px){ .results-grid{grid-template-columns:1fr;} }
+  .result-card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .result-card img{border-bottom:1px solid var(--line);}
+  .result-body{padding:20px 22px 24px;}
+  .result-body h3{font-size:1.02rem; font-family:'IBM Plex Sans',sans-serif; font-weight:600; margin-bottom:8px;}
+  .result-body p{font-size:0.92rem; color:var(--ink-soft); margin-bottom:0;}
+  .result-tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    color:var(--steel); margin-bottom:10px;
+  }
+  .result-card.wide{grid-column:1 / -1;}
+  .result-card.wide .result-inner{display:grid; grid-template-columns:1.3fr 1fr;}
+  @media (max-width:760px){ .result-card.wide .result-inner{grid-template-columns:1fr;} }
+  .result-card.wide img{border-bottom:none; border-right:1px solid var(--line); height:100%; object-fit:cover;}
+  @media (max-width:760px){ .result-card.wide img{border-right:none; border-bottom:1px solid var(--line);} }
+
+  /* ---------- Toolkit ---------- */
+  .toolkit-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+  @media (max-width:760px){ .toolkit-grid{grid-template-columns:1fr;} }
+  .toolkit-col{padding:34px; background:var(--paper-raised);}
+  .toolkit-col + .toolkit-col{border-left:1px solid var(--line);}
+  @media (max-width:760px){ .toolkit-col + .toolkit-col{border-left:none; border-top:1px solid var(--line);} }
+  .toolkit-col h3{font-size:1.05rem; margin-bottom:6px;}
+  .toolkit-col .sub{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--steel); margin-bottom:20px; display:block;}
+  .skill-list{list-style:none; margin:0; padding:0;}
+  .skill-list li{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0; border-top:1px solid var(--line); font-size:0.92rem;
+  }
+  .skill-list li:first-child{border-top:none;}
+  .skill-list .meter{
+    width:120px; height:4px; background:var(--line); position:relative; border-radius:2px; overflow:hidden;
+  }
+  .skill-list .meter i{position:absolute; left:0; top:0; bottom:0; background:var(--ember); border-radius:2px;}
+
+  /* ---------- Academic record ---------- */
+  .record-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media (max-width:860px){ .record-grid{grid-template-columns:1fr;} }
+  .record-block h3{font-size:1rem; margin-bottom:16px; font-family:'IBM Plex Sans',sans-serif; font-weight:600;}
+  .course-list{list-style:none; margin:0 0 28px 0; padding:0; font-size:0.92rem;}
+  .course-list li{padding:8px 0; border-top:1px solid var(--line); color:var(--ink-soft);}
+  .course-list li:first-child{border-top:none;}
+  .course-list b{color:var(--ink); font-weight:500;}
+  .cert-list{list-style:none; margin:0; padding:0; font-size:0.92rem;}
+  .cert-list li{padding:8px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:10px;}
+  .cert-list li:first-child{border-top:none;}
+  .cert-list .yr{font-family:'IBM Plex Mono', monospace; color:var(--steel); font-size:0.82rem; white-space:nowrap;}
+  .gpa-box{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; margin-bottom:24px;
+  }
+  .gpa-box .row{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;}
+  .gpa-box .row span:first-child{font-size:0.88rem; color:var(--ink-soft);}
+  .gpa-box .row span:last-child{font-family:'IBM Plex Mono', monospace; font-size:1rem;}
+  .note{font-size:0.84rem; color:var(--ink-soft); margin-top:14px; border-top:1px dashed var(--line); padding-top:14px;}
+
+  /* ---------- Footer / contact ---------- */
+  footer{background:var(--navy); color:#D9D4C6; padding:80px 0 40px;}
+  footer h2{color:#F7F4EC; font-size:clamp(1.6rem,3vw,2.2rem); max-width:14ch;}
+  .footer-grid{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:48px; border-bottom:1px solid var(--line-dark);}
+  .footer-links{display:flex; gap:60px; flex-wrap:wrap;}
+  .footer-links h4{font-family:'IBM Plex Mono', monospace; font-weight:400; font-size:0.76rem; color:#8D8878; margin-bottom:14px;}
+  .footer-links ul{list-style:none; margin:0; padding:0;}
+  .footer-links li{margin-bottom:10px; font-size:0.92rem;}
+  .footer-links a{text-decoration:none; color:#D9D4C6; border-bottom:1px solid transparent;}
+  .footer-links a:hover{border-color:var(--ember); color:#F7F4EC;}
+  .footer-bottom{display:flex; justify-content:space-between; padding-top:28px; font-size:0.8rem; color:#8D8878; flex-wrap:wrap; gap:10px;}
+
+  .fade-in{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .fade-in.visible{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Noshair Amjad<span>.</span></div>
+    <div class="navlinks">
+      <a href="#overview">Overview</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#results">Data &amp; results</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#record">Academic record</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Final year research · COMSATS University Islamabad · 2023</div>
+    <h1>Modelling and analysing a concentrating solar power plant</h1>
+    <p class="lede">A MATLAB/Simulink study of a parabolic-trough solar thermal plant — built to quantify how irradiance, pressure, and load propagate through a physical system, and to read the correlations out of the resulting data.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#results">See the data analysis</a>
+    </div>
+  </div>
+</header>
+
+<section class="bridge">
+  <div class="wrap">
+    <blockquote style="text-align:left; font-size:clamp(1.05rem,1.6vw,1.25rem); max-width:70ch; margin:0;">Abstract — Concentrating solar power plants are usually described qualitatively: mirrors focus sunlight, a fluid heats up, a turbine spins. This project replaces that description with a working numerical model, then treats the model's output as a dataset: irradiance, mass flow, steam pressure, mechanical power, and efficiency logged over a full run and examined pairwise for how strongly and how quickly one drives the other.</blockquote>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="section-label">01 — Project overview</div>
+    <div class="overview-grid">
+      <div>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:20px;">A thermodynamic system, rebuilt as a testable model</h2>
+        <p style="color:var(--ink-soft);">A parabolic-trough plant concentrates sunlight onto a receiver tube, heats a working fluid, and drives a steam turbine. Rather than take that description on faith, this project encodes it as a set of coupled differential and algebraic equations in MATLAB/Simulink — a solar collector field, thermal storage, a two-stage turbine with reheat, and a closed feedwater loop — and runs it forward in time under a changing irradiance profile and a stepped power demand.</p>
+        <p style="color:var(--ink-soft);">The point of building the model wasn't the model itself. It was what came after: extracting the simulated time-series and asking which variables move together, by how much, and why.</p>
+        <ul class="fact-list">
+          <li><span class="num">5</span><span class="lbl">coupled subsystems modelled (boiler, turbines, reheater, condenser, preheater)</span></li>
+          <li><span class="num">~24%</span><span class="lbl">global efficiency recovered from the simulated cycle</span></li>
+          <li><span class="num">1.15–1.20 MW</span><span class="lbl">mechanical power range across the demand profile</span></li>
+          <li><span class="num">4</span><span class="lbl">UN Sustainable Development Goals mapped to the project's impact</span></li>
+        </ul>
+      </div>
+      <div class="schematic-stack">
+        <div class="schematic-card">
+          <img src="rankine-schematic.png" alt="Rankine cycle schematic of the solar thermal plant">
+          <div class="schematic-caption">Fig. — Simplified Rankine cycle: solar receiver, turbine, condenser, pump</div>
+        </div>
+        <div class="schematic-card">
+          <img src="ts-diagram.png" alt="Temperature-entropy diagram of the steam cycle">
+          <div class="schematic-caption">Fig. — Temperature–entropy (T–s) diagram used to validate cycle behaviour</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:64px;">
+      <div class="flow">
+        <div class="flow-step"><span class="fn">01</span>Solar collector field<br><span style="color:var(--ink-soft); font-size:0.82rem;">focuses DNI onto the receiver</span></div>
+        <div class="flow-step"><span class="fn">02</span>Heat transfer fluid<br><span style="color:var(--ink-soft); font-size:0.82rem;">carries thermal energy forward</span></div>
+        <div class="flow-step"><span class="fn">03</span>Thermal storage<br><span style="color:var(--ink-soft); font-size:0.82rem;">buffers day/night variability</span></div>
+        <div class="flow-step"><span class="fn">04</span>Steam generator<br><span style="color:var(--ink-soft); font-size:0.82rem;">converts heat to pressurised steam</span></div>
+        <div class="flow-step"><span class="fn">05</span>Power block<br><span style="color:var(--ink-soft); font-size:0.82rem;">turbine + generator deliver electricity</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="methodology" id="methodology">
+  <div class="wrap">
+    <div class="section-label">02 — Methodology</div>
+    <div class="section-head">
+      <h2>The Simulink model behind the data</h2>
+      <p>Every chart in the next section is read directly off this model. Each block is a physical component with its own governing equations — pressure–flow relationships in the throttle valve, energy balances in the preheater, momentum balance across the turbines — wired together into one closed-loop system with a controller regulating throttle and extraction valves against power demand.</p>
+    </div>
+    <div class="model-frame">
+      <img src="simulink-model.png" alt="Full Simulink block diagram of the solar thermal power plant model">
+    </div>
+    <div class="methodology-cols">
+      <div>
+        <h3>Why simulate rather than assume</h3>
+        <p>Closed-form estimates of CSP output rely on steady-state assumptions that hide how the plant actually behaves under a moving irradiance profile and a changing load. Simulating the full model exposes transients — how long it takes steam pressure to settle after a demand step, how sensitive mechanical power is to a dip in irradiance — that a back-of-envelope calculation cannot.</p>
+      </div>
+      <div>
+        <h3>What the model outputs</h3>
+        <p>Time-series for irradiance, mass flow rate, steam pressure, mechanical power, and global efficiency, logged across a full simulated cycle. These are the raw series analysed in the results section — the project's actual dataset.</p>
+      </div>
+    </div>
+    <div class="tag-row">
+      <span class="tag">MATLAB</span>
+      <span class="tag">Simulink</span>
+      <span class="tag">Simscape two-phase fluid</span>
+      <span class="tag">PID control</span>
+      <span class="tag">Numerical simulation</span>
+      <span class="tag">Time-series analysis</span>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-label">03 — Data &amp; results</div>
+    <div class="section-head">
+      <h2>Reading correlations out of the simulation</h2>
+      <p>Five signals were logged across the run and compared pairwise. Each plot below is a relationship between two physical quantities — the same kind of question a data analyst asks of any time-series: does one variable predict the other, and how does the system respond when an input changes?</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card">
+        <img src="result-ar-throttle.png" alt="Throttle valve restriction area response over time">
+        <div class="result-body">
+          <span class="result-tag">Control response</span>
+          <h3>Throttle valve vs. demand step</h3>
+          <p>The controller widens the throttle opening as demand rises and narrows it as demand falls, with a smooth transient in between — evidence the control loop is stable rather than oscillating.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <img src="result-boiler-heating.png" alt="Boiler and preheater irradiance response">
+        <div class="result-body">
+          <span class="result-tag">Thermal response</span>
+          <h3>Boiler &amp; preheater irradiance</h3>
+          <p>Both stages settle to a stable operating band after an initial transient, showing the thermal storage is absorbing short-term irradiance fluctuation rather than passing it straight through.</p>
+        </div>
+      </div>
+      <div class="result-card wide">
+        <div class="result-inner">
+          <img src="result-steam-pressure.png" alt="Steam pressure and mass flow rate vs irradiance over time">
+          <div class="result-body">
+            <span class="result-tag">Irradiance → pressure</span>
+            <h3>Steam pressure tracks irradiance-driven flow</h3>
+            <p>Steam pressure and mass flow rate rise and fall together as irradiance changes, holding a steady plateau while irradiance is constant — the clearest single-variable relationship in the dataset, and the one the report's correlation analysis is built around.</p>
+          </div>
+        </div>
+      </div>
+      <div class="result-card">
+        <img src="result-mechanical-power.png" alt="Mechanical power and global efficiency over time">
+        <div class="result-body">
+          <span class="result-tag">Power → efficiency</span>
+          <h3>Mechanical power vs. global efficiency</h3>
+          <p>Efficiency rises with mechanical power output up to a plateau around 24%, then eases off — a diminishing-returns pattern typical of turbine systems operating away from their design point.</p>
+        </div>
+      </div>
+      <div class="result-card">
+        <img src="result-power-generation.png" alt="Power generation load profile over time">
+        <div class="result-body">
+          <span class="result-tag">System response</span>
+          <h3>Generation tracks the load profile</h3>
+          <p>Generated power follows the stepped demand curve (1.15 → 1.20 → 1.15 MW) with a short ramp, confirming the plant model responds proportionally rather than lagging or overshooting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit">
+  <div class="wrap">
+    <div class="section-label">04 — Quantitative toolkit</div>
+    <div class="section-head">
+      <h2>What this project drew on, and what I bring beyond it</h2>
+      <p>The FYP is one evidence point. Three years in live network operations added a second: reading dashboards, logs, and alerts under time pressure to find the signal that explains a fault.</p>
+    </div>
+    <div class="toolkit-grid">
+      <div class="toolkit-col">
+        <h3>Modelling &amp; analysis</h3>
+        <span class="sub">from coursework &amp; the FYP</span>
+        <ul class="skill-list">
+          <li>MATLAB / Simulink <div class="meter"><i style="width:88%"></i></div></li>
+          <li>Numerical computation <div class="meter"><i style="width:78%"></i></div></li>
+          <li>Probability &amp; statistics <div class="meter"><i style="width:65%"></i></div></li>
+          <li>Digital signal processing <div class="meter"><i style="width:70%"></i></div></li>
+          <li>Control systems (PID) <div class="meter"><i style="width:80%"></i></div></li>
+          <li>SQL <div class="meter"><i style="width:60%"></i></div></li>
+        </ul>
+      </div>
+      <div class="toolkit-col">
+        <h3>Systems &amp; monitoring</h3>
+        <span class="sub">from three years in NOC operations</span>
+        <ul class="skill-list">
+          <li>Zabbix / Nagios dashboards <div class="meter"><i style="width:85%"></i></div></li>
+          <li>Log analysis (RHEL) <div class="meter"><i style="width:75%"></i></div></li>
+          <li>Incident &amp; root-cause analysis <div class="meter"><i style="width:88%"></i></div></li>
+          <li>Network protocols (TCP/IP, BGP, OSPF) <div class="meter"><i style="width:82%"></i></div></li>
+          <li>Linux administration <div class="meter"><i style="width:78%"></i></div></li>
+          <li>Documentation &amp; reporting <div class="meter"><i style="width:80%"></i></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="record">
+  <div class="wrap">
+    <div class="section-label">05 — Academic record</div>
+    <div class="section-head">
+      <h2>Education &amp; certifications</h2>
+    </div>
+    <div class="record-grid">
+      <div class="record-block">
+        <div class="gpa-box">
+          <div class="row"><span>Degree</span><span>BS Electrical Engineering</span></div>
+          <div class="row"><span>Institution</span><span>COMSATS University Islamabad</span></div>
+          <div class="row"><span>Graduated</span><span>July 2023</span></div>
+          <div class="row"><span>CGPA</span><span>2.72 / 4.00</span></div>
+        </div>
+        <h3>Relevant coursework</h3>
+        <ul class="course-list">
+          <li><b>Numerical Computations</b> — B+</li>
+          <li><b>Probability Methods in Engineering</b> — C+</li>
+          <li><b>Digital Signal Processing</b> — C+</li>
+          <li><b>Control Systems</b> — C</li>
+          <li><b>Introduction to Computer Programming</b> — B-</li>
+          <li><b>Object Oriented Programming</b> — B+</li>
+          <li><b>Signals and Systems</b> — B-</li>
+        </ul>
+        <p class="note">Coursework and CGPA drawn from official COMSATS transcript, available on request.</p>
+      </div>
+      <div class="record-block">
+        <h3>Certifications</h3>
+        <ul class="cert-list">
+          <li><span>Fortinet FortiGate 7.6 Operator</span><span class="yr">2026</span></li>
+          <li><span>Network Support and Security — Cisco</span><span class="yr">2025</span></li>
+          <li><span>ISO/IEC 27001:2022 Information Security Associate</span><span class="yr">2025</span></li>
+          <li><span>CCNA: Enterprise Networking, Security &amp; Automation</span><span class="yr">2024</span></li>
+          <li><span>CCNA: Switching, Routing &amp; Wireless Essentials</span><span class="yr">2024</span></li>
+          <li><span>Hands-on Introduction to Linux &amp; Shell Scripting — IBM</span><span class="yr">2024</span></li>
+          <li><span>CCNA: Introduction to Networks — Cisco</span><span class="yr">2023</span></li>
+        </ul>
+        <h3 style="margin-top:32px;">Current role</h3>
+        <p style="color:var(--ink-soft); font-size:0.92rem;">NOC (IP) Specialist, MNP Database (G) Limited — live monitoring, incident/RCA processes, and infrastructure health reporting across telecom and financial-services networks since December 2024.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>About this write-up</h2>
+        <p style="color:#B7B2A2; max-width:42ch; margin-top:16px;">This page documents the modelling and data analysis behind my final year project — the model, the method, and what the resulting data showed.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="mailto:amjadnoshair@gmail.com">amjadnoshair@gmail.com</a></li>
+            <li><a href="https://www.linkedin.com/in/malik-muhammad-noshair-amjad" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Documents</h4>
+          <ul>
+            <li><a href="#overview">Project overview</a></li>
+            <li><a href="#results">Data &amp; results</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Malik Muhammad Noshair Amjad — Islamabad, Pakistan</span>
+      <span>MATLAB/Simulink research write-up — COMSATS University Islamabad, 2023</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('section, .hero-inner').forEach(el=>{
+    el.classList.add('fade-in');
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
